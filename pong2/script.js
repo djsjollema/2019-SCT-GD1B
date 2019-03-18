@@ -25,18 +25,26 @@ canvas.height = window.innerHeight;
 let myCircle = new Circle(200,300);
 
 let v_x = 10;
-
+let v_y = 10;
 
 function animate(){
   context.clearRect(0,0,canvas.width,canvas.height)
   requestAnimationFrame(animate);
   myCircle.x += v_x;
+  myCircle.y += v_y;
   myCircle.draw();
+
   if(myCircle.x >= canvas.width){
     v_x = -v_x;
   }
   if(myCircle.x <= 0){
     v_x = - v_x;
+  }
+  if(myCircle.y >= canvas.height){
+    v_y = -v_y;
+  }
+  if(myCircle.y <= 0){
+    v_y = -v_y;
   }
 }
 
