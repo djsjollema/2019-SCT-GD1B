@@ -22,12 +22,22 @@ const context = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let myCircle = new Circle(getRandomNumber(1000),getRandomNumber(500));
-myCircle.draw();
+let myCircle = new Circle(200,300);
 
-let otherCircle = new Circle(getRandomNumber(1000),getRandomNumber(500))
-otherCircle.draw();
+let v_x = 10;
 
-function getRandomNumber(max){
-  return Math.floor(Math.random()*max);
+
+function animate(){
+  context.clearRect(0,0,canvas.width,canvas.height)
+  requestAnimationFrame(animate);
+  myCircle.x += v_x;
+  myCircle.draw();
+  if(myCircle.x >= canvas.width){
+    v_x = -v_x;
+  }
+  if(myCircle.x <= 0){
+    v_x = - v_x;
+  }
 }
+
+animate();
